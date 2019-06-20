@@ -126,10 +126,6 @@ public class CursoMcApplication implements CommandLineRunner {
 		
 		itpedRepo.saveAll(Arrays.asList(ip1, ip2,ip3));
 		
-		
-		
-		
-		
 	}
 
 }
