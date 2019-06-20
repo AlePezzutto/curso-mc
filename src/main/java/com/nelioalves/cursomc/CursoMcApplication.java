@@ -2,6 +2,7 @@ package com.nelioalves.cursomc;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,7 @@ import com.nelioalves.cursomc.domain.Cidade;
 import com.nelioalves.cursomc.domain.Cliente;
 import com.nelioalves.cursomc.domain.Endereco;
 import com.nelioalves.cursomc.domain.Estado;
+import com.nelioalves.cursomc.domain.ItemPedido;
 import com.nelioalves.cursomc.domain.Pagamento;
 import com.nelioalves.cursomc.domain.PagamentoBoleto;
 import com.nelioalves.cursomc.domain.PagamentoCartao;
@@ -24,6 +26,7 @@ import com.nelioalves.cursomc.repositories.CidadeRepository;
 import com.nelioalves.cursomc.repositories.ClienteRepository;
 import com.nelioalves.cursomc.repositories.EnderecoRepository;
 import com.nelioalves.cursomc.repositories.EstadoRepository;
+import com.nelioalves.cursomc.repositories.ItemPedidoRepository;
 import com.nelioalves.cursomc.repositories.PagamentoRepository;
 import com.nelioalves.cursomc.repositories.PedidoRepository;
 import com.nelioalves.cursomc.repositories.ProdutoRepository;
@@ -47,6 +50,9 @@ public class CursoMcApplication implements CommandLineRunner {
 	private PedidoRepository pedRepo;
 	@Autowired
 	private PagamentoRepository pagRepo;
+	@Autowired
+	private ItemPedidoRepository itpedRepo;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoMcApplication.class, args);
@@ -106,6 +112,23 @@ public class CursoMcApplication implements CommandLineRunner {
 		ped2.setPagamento(pagto2);
 		pedRepo.saveAll(Arrays.asList(ped1, ped2));
 		pagRepo.saveAll(Arrays.asList(pagto1, pagto2));
+	
+		ItemPedido ip1 = new ItemPedido(ped1, prd1, 0.00, 1, 2000.00 );
+		ItemPedido ip2 = new ItemPedido(ped1, prd3, 0.00, 2, 80.00 );
+		ItemPedido ip3 = new ItemPedido(ped2, prd2, 100.00, 1, 800.00 );
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		prd1.getItens().add(ip1);
+		prd2.getItens().add(ip3);
+		prd3.getItens().add(ip2);
+		
+		itpedRepo.saveAll(Arrays.asList(ip1, ip2,ip3));
+		
+		
+		
+		
 		
 	}
 
