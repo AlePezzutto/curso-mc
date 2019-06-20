@@ -29,11 +29,9 @@ public class Pedido implements Serializable {
 	@JsonFormat(pattern="dd/MM/yyyy hh:mm")
 	private Date instante;
 	
-	@JsonManagedReference
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido") // tem que colocar senão dá erro de entidade transiente
 	private Pagamento pagamento;
 	
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
