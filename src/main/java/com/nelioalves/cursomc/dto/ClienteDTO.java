@@ -62,7 +62,7 @@ public class ClienteDTO implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public Cliente toCliente() {
 		//Integer id, String nome, String email, String cpfCnpj, TipoCliente tipo
 		return new Cliente(this.id, this.nome, this.email, null, null);

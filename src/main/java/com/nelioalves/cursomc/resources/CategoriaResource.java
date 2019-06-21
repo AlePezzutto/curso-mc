@@ -51,7 +51,7 @@ public class CategoriaResource {
 	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO catDTO
 			                          ,@PathVariable Integer id){
 		catDTO.setId(id);
-		Categoria categoria = service.update(catDTO.toCategoria());
+		service.update(catDTO.toCategoria());
 		
 		return ResponseEntity.noContent().build();
 	}
