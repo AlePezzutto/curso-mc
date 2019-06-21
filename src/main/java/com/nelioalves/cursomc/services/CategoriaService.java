@@ -33,10 +33,12 @@ public class CategoriaService {
 		return repo.save(categoria);
 	}
 
-	public Categoria update(Categoria categoria) {
+	public Categoria update(Categoria newCat) {
 		
-		// Para verificar se o id não é nulo
-		find(categoria.getId());
+		Categoria categoria = find(newCat.getId());
+		
+		categoria.setNome(newCat.getNome());
+		
 		return repo.save(categoria);
 	}
 
