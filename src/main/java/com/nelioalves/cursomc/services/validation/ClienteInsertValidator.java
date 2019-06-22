@@ -13,7 +13,7 @@ import com.nelioalves.cursomc.dto.ClienteNewDTO;
 import com.nelioalves.cursomc.repositories.ClienteRepository;
 import com.nelioalves.cursomc.resources.exceptions.FieldErrorMessage;
 
-public class ClienteContraintsValidator implements ConstraintValidator<ClienteConstraint, ClienteNewDTO> {
+public class ClienteInsertValidator implements ConstraintValidator<ClienteInsertConstraint, ClienteNewDTO> {
 	
 	@Autowired
 	private ClienteRepository cliRepo;

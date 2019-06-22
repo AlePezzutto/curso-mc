@@ -11,9 +11,9 @@ import com.nelioalves.cursomc.domain.Cidade;
 import com.nelioalves.cursomc.domain.Cliente;
 import com.nelioalves.cursomc.domain.Endereco;
 import com.nelioalves.cursomc.domain.enums.TipoCliente;
-import com.nelioalves.cursomc.services.validation.ClienteConstraint;
+import com.nelioalves.cursomc.services.validation.ClienteInsertConstraint;
 
-@ClienteConstraint
+@ClienteInsertConstraint
 public class ClienteNewDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
