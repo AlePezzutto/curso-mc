@@ -8,10 +8,10 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Constraint(validatedBy = CpfCnpjValidator.class)
+@Constraint(validatedBy = ClienteContraintsValidator.class)
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CpfCnpjConstraint {
+public @interface ClienteConstraint {
 	
 	String message() default "Erro de validação";
 	

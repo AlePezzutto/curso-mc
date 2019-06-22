@@ -6,14 +6,21 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.nelioalves.cursomc.domain.enums.TipoCliente;
 import com.nelioalves.cursomc.dto.ClienteNewDTO;
+import com.nelioalves.cursomc.repositories.ClienteRepository;
 import com.nelioalves.cursomc.resources.exceptions.FieldErrorMessage;
 
-public class CpfCnpjValidator implements ConstraintValidator<CpfCnpjConstraint, ClienteNewDTO> {
+public class ClienteContraintsValidator implements ConstraintValidator<ClienteConstraint, ClienteNewDTO> {
+	
+	@Autowired
+	private ClienteRepository cliRepo;
 	
 	@Override
 	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
+		
 		
 		List<FieldErrorMessage> list = new ArrayList<>();
 		
@@ -21,7 +28,7 @@ public class CpfCnpjValidator implements ConstraintValidator<CpfCnpjConstraint, 
 		System.out.println(objDto.getTipoCliente());
 		System.out.println(objDto.getCpfCnpj());
 		
-		
+		// Valida CPF ou CNPJ
 		if(objDto.getTipoCliente().equals(TipoCliente.PESSOAFISICA.getCodigo())) {
 			if(!DocumentUtils.isValidCPF(objDto.getCpfCnpj())){
 				list.add(new FieldErrorMessage("cpfCnpj", "CPF Inválido"));
@@ -31,6 +38,11 @@ public class CpfCnpjValidator implements ConstraintValidator<CpfCnpjConstraint, 
 			if(!DocumentUtils.isValidCNPJ(objDto.getCpfCnpj())){
 				list.add(new FieldErrorMessage("cpfCnpj", "CNPJ Inválido"));
 			}
+		}
+		
+		// Valida email duplicado
+		if( cliRepo.findByEmail(objDto.getEmail()) != null) {
+			list.add(new FieldErrorMessage("email", "eMail já cadastrado"));
 		}
 		
 		// 	inclua os testes aqui, inserindo erros na lista
