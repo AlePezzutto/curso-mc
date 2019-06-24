@@ -1,0 +1,59 @@
+[33mcommit 427fd66cc8c5cf02940b2a8891cc4778142c1393[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Mon Jun 24 10:40:00 2019 -0300
+
+    subtotal de itens e valor total do pedido
+
+[33mcommit 8533de7f8785e76cc1f6454eb63fe1958922cba1[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Mon Jun 24 10:30:41 2019 -0300
+
+    Implementação da busca de produtos usando parametros
+
+[33mcommit dde741cf41449c411cbbabe4411fc8f255b281e8[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Sat Jun 22 12:54:21 2019 -0300
+
+    Alteração de cliente :: email duplicado
+
+[33mcommit d10be3253eb15cd410a4192b4b7035d2059bdddf[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Sat Jun 22 11:44:34 2019 -0300
+
+    Validação de email já cadastrado
+
+[33mcommit 51dcfa2a228e8ded64215743175765917cb0906b[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 20:05:48 2019 -0300
+
+    Validação customizada CPF/CNPJ
+
+[33mcommit 55b6a0dee9178979c6e2660bd18c06ec78da3e93[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 16:33:36 2019 -0300
+
+    DELETE clientes :: ajuste na deleção em cascata
+
+[33mcommit 15af692b07ab5d3a7bef5eee1a9f745786a42ad6[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 16:27:24 2019 -0300
+
+    POST clientes
+
+[33mcommit 76298935588e8a685eb520d0bb7eacd5614a2098[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 12:26:46 2019 -0300
+
+    put, get, delete para clientes
+
+[33mcommit 678abeccb2c3e1fab8db0826a1369754a28350ca[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 11:17:41 2019 -0300
+
+    Personalizando as mensagem de validação dos campos
+
+[33mcommit c163791098fee0ccd286a9d82fa252482fda9667[m
+Author: alepezzutto <ale.pezzutto@gmail.com>
+Date:   Fri Jun 21 10:54:58 2019 -0300
+
+    Incluindo validação das categorias

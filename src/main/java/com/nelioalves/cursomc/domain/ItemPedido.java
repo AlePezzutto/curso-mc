@@ -1,6 +1,8 @@
 package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -41,8 +43,17 @@ public class ItemPedido implements Serializable {
 		return this.id.getPedido();
 	}
 	
+	public void setPedido(Pedido pedido)
+	{
+		this.id.setPedido(pedido);
+	}
+	
 	public Produto getProduto() {
 		return this.id.getProduto();
+	}
+	
+	public void setProduto(Produto produto) {
+		this.id.setProduto(produto);
 	}
 	
 	public void setId(ItemPedidoPK id) {
@@ -73,6 +84,26 @@ public class ItemPedido implements Serializable {
 		this.preco = preco;
 	}
 
+	public double getSubTotal() {
+		return (this.preco - this.desconto) * this.quantidade;
+	}
+	
+
+	@Override
+	public String toString() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		StringBuilder builder = new StringBuilder();
+		builder.append(getProduto().getNome());
+		builder.append(", Qte: ");
+		builder.append(getQuantidade());
+		builder.append(", Preço unitário: ");
+		builder.append(nf.format(getPreco()));
+		builder.append(", Subtotal: ");
+		builder.append(nf.format(getSubTotal()));
+		builder.append("\n");
+		return builder.toString();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,7 +129,4 @@ public class ItemPedido implements Serializable {
 		return true;
 	}
 	
-	public double getSubTotal() {
-		return (this.preco - this.desconto) * this.quantidade;
-	}
 }
