@@ -75,15 +75,38 @@ public class CursoMcApplication implements CommandLineRunner {
 		Produto prd1 = new Produto(null, "Computador", 2000.00);
 		Produto prd2 = new Produto(null, "Impressora", 800.00);
 		Produto prd3 = new Produto(null, "Mouse", 80.00);
+		Produto prd4 = new Produto(null, "Mesa de escritório", 300.00);
+		Produto prd5 = new Produto(null, "Toalha", 50.00);
+		Produto prd6 = new Produto(null, "Colcha", 200.00);
+		Produto prd7 = new Produto(null, "TV true color", 1200.00);
+		Produto prd8 = new Produto(null, "Roçadeira", 800.00);
+		Produto prd9 = new Produto(null, "Abajour", 100.00);
+		Produto prd10 = new Produto(null, "Pendente", 180.00);
+		Produto prd11 = new Produto(null, "Shampoo", 13.00);
+		
 		
 		cat1.getProdutos().addAll(Arrays.asList(prd1, prd2, prd3));
-		cat2.getProdutos().addAll(Arrays.asList(prd2));
+		cat2.getProdutos().addAll(Arrays.asList(prd2, prd4));
+		cat3.getProdutos().addAll(Arrays.asList(prd5, prd6));
+		cat4.getProdutos().addAll(Arrays.asList(prd1, prd2, prd3, prd7));
+		cat5.getProdutos().addAll(Arrays.asList(prd8));
+		cat6.getProdutos().addAll(Arrays.asList(prd9, prd10));
+		cat7.getProdutos().addAll(Arrays.asList(prd11));
 		
-		prd1.getCategorias().addAll(Arrays.asList(cat1));
-		prd2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		prd3.getCategorias().addAll(Arrays.asList(cat1));
+		prd1.getCategorias().addAll(Arrays.asList(cat1, cat4));
+		prd2.getCategorias().addAll(Arrays.asList(cat1, cat2, cat4));
+		prd3.getCategorias().addAll(Arrays.asList(cat1, cat4));
+		prd4.getCategorias().addAll(Arrays.asList(cat2));
+		prd5.getCategorias().addAll(Arrays.asList(cat3));
+		prd6.getCategorias().addAll(Arrays.asList(cat3));
+		prd7.getCategorias().addAll(Arrays.asList(cat4));
+		prd8.getCategorias().addAll(Arrays.asList(cat5));
+		prd9.getCategorias().addAll(Arrays.asList(cat6));
+		prd10.getCategorias().addAll(Arrays.asList(cat6));
+		prd11.getCategorias().addAll(Arrays.asList(cat7));	
 		
-		prodRepo.saveAll(Arrays.asList(prd1, prd2, prd3));
+		
+		prodRepo.saveAll(Arrays.asList(prd1, prd2, prd3, prd4, prd5, prd6, prd7, prd8, prd9, prd10, prd11 ));
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
 		Estado est2 = new Estado(null, "São Paulo");
