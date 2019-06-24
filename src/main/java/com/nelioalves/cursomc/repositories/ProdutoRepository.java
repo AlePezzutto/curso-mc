@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nelioalves.cursomc.domain.Categoria;
 import com.nelioalves.cursomc.domain.Produto;
@@ -15,15 +16,17 @@ import com.nelioalves.cursomc.domain.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 
+	@Transactional(readOnly=true)
 	@Query("SELECT DISTINCT obj FROM Produto obj INNER JOIN obj.categorias cat WHERE obj.nome LIKE %:nome% AND cat IN :categorias")
 	public Page<Produto> search(@Param("nome") String nome, @Param("categorias") List<Categoria> categorias, Pageable pageRequest);
 	
 	/*
-	Usando keywords Spring Data JPA:  
+	Usando keywords Spring Data JPA:
+	  	Desta forma, o spring implementará o método automaticamente:
+	  
 		public Page<Produto> findByNomeContainingAndCategoriasIn(String nome
 		                                                        ,List<Categoria> categorias
 		                                                        ,Pageable pageRequest);
-	  Desta forma, o spring implementará o método automaticamente
 	  
 	 */
 	
