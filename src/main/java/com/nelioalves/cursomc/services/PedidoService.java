@@ -25,13 +25,19 @@ public class PedidoService {
 	private PagamentoRepository pagtoRepo;
 	
 	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
+	
+	@Autowired
+	private ClienteService cliService;
+
+	@Autowired
 	private BoletoService boletoService;
 	
 	@Autowired
 	private ProdutoService prodService;
 
 	@Autowired
-	private ItemPedidoRepository itemPedidoRepository;
+	private EmailService emailService;
 	
 	public Pedido find(Integer id){
 		
@@ -45,6 +51,7 @@ public class PedidoService {
 		
 		pedido.setId(null);
 		pedido.setInstante(new Date());
+		pedido.setCliente(cliService.find(pedido.getCliente().getId()));
 		pedido.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		pedido.getPagamento().setPedido(pedido);
 		
@@ -68,6 +75,9 @@ public class PedidoService {
 		}
 		
 		itemPedidoRepository.saveAll(pedido.getItens());
+		
+		//System.out.println(pedido);
+		emailService.sendOrderConfirmationEmail(pedido);
 		
 		return pedido;
 	}
